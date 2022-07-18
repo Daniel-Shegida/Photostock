@@ -1,3 +1,5 @@
+import 'package:endgame/assets/colors/colors.dart';
+import 'package:endgame/assets/text/text.dart';
 import 'package:flutter/material.dart';
 
 class LoadingErrorWidget extends StatelessWidget {
@@ -10,7 +12,7 @@ class LoadingErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 51,
-      color: Colors.deepOrangeAccent,
+      color: ProjectColors.errorColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
@@ -22,7 +24,7 @@ class LoadingErrorWidget extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Ошибка загрузки",
+                  ProjectStrings.error,
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -35,9 +37,9 @@ class LoadingErrorWidget extends StatelessWidget {
                 child: InkWell(
                   onTap: onPressed,
                   child: const Text(
-                    'Повторить',
+                    ProjectStrings.repeat,
                     style: TextStyle(
-                      color: Colors.black87,
+                      color: ProjectColors.black,
                       fontSize: 16,
                     ),
                   ),

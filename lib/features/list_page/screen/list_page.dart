@@ -1,4 +1,5 @@
 import 'package:elementary/elementary.dart';
+import 'package:endgame/assets/colors/colors.dart';
 import 'package:endgame/features/list_page/screen/list_wm.dart';
 import 'package:endgame/features/list_page/widgets/Image_sheet.dart';
 import 'package:endgame/features/list_page/widgets/error_widget.dart';
@@ -16,7 +17,7 @@ class ListPageScreen extends ElementaryWidget<IListPageWidgetModel> {
   @override
   Widget build(IListPageWidgetModel wm) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: ProjectColors.backGround,
       body: EntityStateNotifierBuilder<List<CardInfo>>(
         listenableEntityState: wm.photoListState,
         builder: (_, value) {

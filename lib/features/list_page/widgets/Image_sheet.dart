@@ -1,3 +1,4 @@
+import 'package:endgame/assets/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 
@@ -30,7 +31,7 @@ class ImageSheet extends StatelessWidget {
               height: 300,
               width: 300,
               decoration: const BoxDecoration(
-                color: Colors.black,
+                color: ProjectColors.black,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(40.0),
                   topLeft: Radius.circular(40.0),
@@ -56,7 +57,7 @@ class ImageSheet extends StatelessWidget {
               width: 300,
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: ProjectColors.white,
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(40.0),
                     bottomLeft: Radius.circular(40.0),
