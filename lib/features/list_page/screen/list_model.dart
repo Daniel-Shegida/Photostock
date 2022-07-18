@@ -1,7 +1,6 @@
 import 'dart:convert';
-
 import 'package:elementary/elementary.dart';
-import 'package:endgame/features/utils/card_info.dart';
+import 'package:endgame/utils/card_info.dart';
 import 'package:http/http.dart' as http;
 
 const int imagesPerPage = 3;
@@ -30,7 +29,7 @@ class ListPageModel extends ElementaryModel {
       DateTime data2 = DateTime.parse(body[2]['created_at']);
       List<CardInfo> cardList = [
         CardInfo(
-          imageUrl: body[0]['urls']['full'],
+          imageUrl: body[0]['urls']['regular'],
           hash: body[0]['blur_hash'] ?? 'LrGS16e-Rjax~qRjWBj[-=azoLay',
           username: body[0]['user']['username'] ?? "nobody",
           likes: body[0]['likes'] ?? 0,
@@ -38,7 +37,7 @@ class ListPageModel extends ElementaryModel {
           createdAt: "${data0.day}.${data0.month}.${data0.year}",
         ),
         CardInfo(
-          imageUrl: body[1]['urls']['full'],
+          imageUrl: body[1]['urls']['regular'],
           hash: body[1]['blur_hash'] ?? 'LrGS16e-Rjax~qRjWBj[-=azoLay',
           username: body[1]['user']['username'] ?? "nobody",
           likes: body[1]['likes'] ?? 0,
@@ -46,7 +45,7 @@ class ListPageModel extends ElementaryModel {
           createdAt: '${data1.day}.${data1.month}.${data1.year}',
         ),
         CardInfo(
-          imageUrl: body[2]['urls']['full'],
+          imageUrl: body[2]['urls']['regular'],
           hash: body[2]['blur_hash'] ?? 'LrGS16e-Rjax~qRjWBj[-=azoLay',
           username: body[2]['user']['username'] ?? "nobody",
           likes: body[2]['likes'] ?? 0,

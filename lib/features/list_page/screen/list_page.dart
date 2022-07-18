@@ -2,7 +2,7 @@ import 'package:elementary/elementary.dart';
 import 'package:endgame/features/list_page/screen/list_wm.dart';
 import 'package:endgame/features/list_page/widgets/Image_sheet.dart';
 import 'package:endgame/features/list_page/widgets/error_widget.dart';
-import 'package:endgame/features/utils/card_info.dart';
+import 'package:endgame/utils/card_info.dart';
 import 'package:flutter/material.dart';
 
 /// экран просмотра существующих мест

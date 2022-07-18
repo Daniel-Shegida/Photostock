@@ -1,7 +1,7 @@
 import 'package:elementary/elementary.dart';
 import 'package:endgame/features/detail_page/detail_page_model.dart';
 import 'package:endgame/features/detail_page/detail_page_screen.dart';
-import 'package:endgame/features/utils/card_info.dart';
+import 'package:endgame/utils/card_info.dart';
 import 'package:flutter/material.dart';
 
 /// фабрика создания [DetailWidgetModel]
