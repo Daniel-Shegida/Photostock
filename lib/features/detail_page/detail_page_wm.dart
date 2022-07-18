@@ -4,38 +4,34 @@ import 'package:endgame/features/detail_page/detail_page_screen.dart';
 import 'package:endgame/features/utils/card_info.dart';
 import 'package:flutter/material.dart';
 
-/// фабрика создания [PlaceDetailWidgetModel]
-PlaceDetailWidgetModel Function(BuildContext context)
-placeDetailWidgetModelFactoryWithParams(CardInfo _url) {
+/// фабрика создания [DetailWidgetModel]
+DetailWidgetModel Function(BuildContext context)
+    placeDetailWidgetModelFactoryWithParams(CardInfo url) {
   return (context) {
-    return PlaceDetailWidgetModel(
-      _url,
-      PlaceDetailModel(
-      ),
+    return DetailWidgetModel(
+      url,
+      DetailModel(),
     );
   };
 }
 
-/// WidgetModel for [PlaceDetailScreen]
-class PlaceDetailWidgetModel
-    extends WidgetModel<PlaceDetailScreen, PlaceDetailModel>
+/// WidgetModel for [DetailScreen]
+class DetailWidgetModel extends WidgetModel<DetailScreen, DetailModel>
     with SingleTickerProviderWidgetModelMixin
-    implements IPlaceDetailWidgetModel {
+    implements IDetailWidgetModel {
 
+  DetailWidgetModel(
+    this._cardInfo,
+    DetailModel model,
+  ) : super(model);
 
-  /// standard consctructor for elem
-  PlaceDetailWidgetModel(
-      CardInfo this._url,
-      PlaceDetailModel model,
-      ) : super(model);
+  final CardInfo _cardInfo;
 
-  final CardInfo _url;
-
-  CardInfo get url => _url;
+  @override
+  CardInfo get cardInfo => _cardInfo;
 
   @override
   void initWidgetModel() {
-
     super.initWidgetModel();
   }
 
@@ -50,10 +46,9 @@ class PlaceDetailWidgetModel
   }
 }
 
-/// Interface of [PlaceDetailWidgetModel].
-abstract class IPlaceDetailWidgetModel extends IWidgetModel {
+/// Interface of [DetailWidgetModel].
+abstract class IDetailWidgetModel extends IWidgetModel {
+  CardInfo get cardInfo;
 
-  CardInfo get url;
   void pop();
-
 }

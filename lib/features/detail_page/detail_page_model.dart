@@ -1,9 +1,8 @@
 import 'package:elementary/elementary.dart';
 
-/// модель PlaceAddingWidgetModel
-class PlaceDetailModel extends ElementaryModel {
+class DetailModel extends ElementaryModel {
 
 
-  /// конструктор[PlaceDetailModel]
-  PlaceDetailModel();
+  /// конструктор[DetailModel]
+  DetailModel();
 }

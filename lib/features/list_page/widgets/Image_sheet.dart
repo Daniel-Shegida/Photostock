@@ -33,52 +33,27 @@ class ImageSheet extends StatelessWidget {
                 color: Colors.black,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(40.0),
-                  bottomRight: Radius.circular(40.0),
                   topLeft: Radius.circular(40.0),
-
-                  // border: Border.symmetric(horizontal: ),
                 ),
               ),
-              // child: Hero(
-              //   tag: 'full2',
-              child: Container(
-                // color: Colors.red,
-                decoration: BoxDecoration(
-                  // image: DecorationImage(
-                  //     image: NetworkImage(imageUrl, ), fit: BoxFit.cover),
-                  color: Colors.black,
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(40.0),
-                    topLeft: Radius.circular(40.0),
-
-                    // border: Border.symmetric(horizontal: ),
-                  ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(40.0),
+                  topLeft: Radius.circular(40.0),
                 ),
-                // color: Colors.red,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(40.0),
-                    topLeft: Radius.circular(40.0),
-
-                    // border: Border.symmetric(horizontal: ),
-                  ),
-                  child: Image.network(
-                    imageUrl,
-                    fit: BoxFit.cover,
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return BlurHash(hash: hash);
-                    },
-                  ),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return BlurHash(hash: hash);
+                  },
                 ),
               ),
-              // ),
             ),
             SizedBox(
-              // height: 100,
               width: 300,
-              // color: Colors.white,
               child: Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -88,7 +63,7 @@ class ImageSheet extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                       left: 16.0, right: 16.0, top: 8, bottom: 12),
                   child: Row(
                     children: [
@@ -98,13 +73,13 @@ class ImageSheet extends StatelessWidget {
                           children: [
                             Text(
                               userName,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 12,
                               ),
                             ),
                             Text(
                               createdAt,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 10,
                               ),
                             ),
@@ -117,20 +92,11 @@ class ImageSheet extends StatelessWidget {
                       Center(
                         child: Text(
                           "$likes likes",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12,
                           ),
                         ),
                       )
-                      // Expanded(
-                      //   child: Column(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     children: const [
-                      //       Text("adaq"),
-                      //
-                      //     ],
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),

@@ -1,4 +1,4 @@
-import 'package:endgame/features/list_page/list_page.dart';
+import 'package:endgame/features/list_page/screen/list_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

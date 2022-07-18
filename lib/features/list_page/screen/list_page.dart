@@ -1,5 +1,5 @@
 import 'package:elementary/elementary.dart';
-import 'package:endgame/features/list_page/list_wm.dart';
+import 'package:endgame/features/list_page/screen/list_wm.dart';
 import 'package:endgame/features/list_page/widgets/Image_sheet.dart';
 import 'package:endgame/features/list_page/widgets/error_widget.dart';
 import 'package:endgame/features/utils/card_info.dart';
@@ -18,7 +18,7 @@ class ListPageScreen extends ElementaryWidget<IListPageWidgetModel> {
     return Scaffold(
       backgroundColor: Colors.grey,
       body: EntityStateNotifierBuilder<List<CardInfo>>(
-        listenableEntityState: wm.placesListState,
+        listenableEntityState: wm.photoListState,
         builder: (_, value) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.5),
@@ -37,8 +37,7 @@ class ListPageScreen extends ElementaryWidget<IListPageWidgetModel> {
                               return ImageSheet(
                                 imageUrl: value?[index].imageUrl ?? "daq",
                                 onTap: () {
-                                  print(value?[1]);
-                                  wm.push(value![index]);
+                                  wm.pushToDetailScreen(value![index]);
                                   // wm.getApiData;
                                 },
                                 userName: value?[index].username ?? '',
@@ -56,12 +55,12 @@ class ListPageScreen extends ElementaryWidget<IListPageWidgetModel> {
                           ),
                         ),
                         EntityStateNotifierBuilder<bool>(
-                          listenableEntityState: wm.placesListState2,
+                          listenableEntityState: wm.loadingState,
                           builder: (_, value) {
                             return const SizedBox.shrink();
                           },
                           errorBuilder: (_, __, ___) {
-                            return ErrorWidget2(onPressed: wm.getApiData);
+                            return LoadingErrorWidget(onPressed: wm.errorLoad);
                           },
                           loadingBuilder: (_, __) {
                             return const CircularProgressIndicator();
@@ -80,14 +79,10 @@ class ListPageScreen extends ElementaryWidget<IListPageWidgetModel> {
             child: CircularProgressIndicator(),
           );
         },
-        errorBuilder: (
-          ____,
-          __,
-          ___,
-        ) {
+        errorBuilder: (____, __, ___) {
           return Center(
-            child: ErrorWidget2(
-              onPressed: wm.getApiData,
+            child: LoadingErrorWidget(
+              onPressed: wm.startingLoad,
             ),
           );
         },
