@@ -5,14 +5,12 @@ import 'package:endgame/features/list_page/screen/list_page.dart';
 import 'package:endgame/utils/card_info.dart';
 import 'package:flutter/material.dart';
 
-/// Factory for [ListPageWidgetModel]
 ListPageWidgetModel listPageWidgetModelFactory(BuildContext context) {
   return ListPageWidgetModel(
     ListPageModel(),
   );
 }
 
-/// WidgetModel for [ListPageScreen]
 class ListPageWidgetModel extends WidgetModel<ListPageScreen, ListPageModel>
     with SingleTickerProviderWidgetModelMixin
     implements IListPageWidgetModel {
@@ -20,19 +18,36 @@ class ListPageWidgetModel extends WidgetModel<ListPageScreen, ListPageModel>
 
   int _currentPage = 1;
 
-  @override
-  ScrollController get scrollController => _scrollController;
-
   final EntityStateNotifier<List<CardInfo>> _photoListState =
       EntityStateNotifier<List<CardInfo>>();
 
   final EntityStateNotifier<bool> _loadingState = EntityStateNotifier<bool>();
 
-  /// standard consctructor for elem
   ListPageWidgetModel(
     ListPageModel model,
   ) : super(model);
 
+  bool loading = false;
+  void _getApiData() async {
+    final newCardList = await model.search(_currentPage);
+
+    if (newCardList == null) {
+      if (_photoListState.value?.data?.isEmpty ?? true) {
+        _photoListState.error();
+      } else {
+        _loadingState.error();
+      }
+    } else {
+      List<CardInfo> oldCardList = _photoListState.value?.data ?? [];
+
+      oldCardList.addAll(newCardList);
+
+      _photoListState.content(oldCardList);
+      _currentPage++;
+      loading = false;
+      _loadingState.content(true);
+    }
+  }
   @override
   ListenableState<EntityState<List<CardInfo>>> get photoListState =>
       _photoListState;
@@ -40,7 +55,8 @@ class ListPageWidgetModel extends WidgetModel<ListPageScreen, ListPageModel>
   @override
   ListenableState<EntityState<bool>> get loadingState => _loadingState;
 
-  bool loading = false;
+  @override
+  ScrollController get scrollController => _scrollController;
 
   @override
   void initWidgetModel() {
@@ -78,27 +94,6 @@ class ListPageWidgetModel extends WidgetModel<ListPageScreen, ListPageModel>
     );
   }
 
-  void _getApiData() async {
-    final newCardList = await model.search(_currentPage);
-
-    if (newCardList == null) {
-      if (_photoListState.value?.data?.isEmpty ?? true) {
-        _photoListState.error();
-      } else {
-        _loadingState.error();
-      }
-    } else {
-      List<CardInfo> oldCardList = _photoListState.value?.data ?? [];
-
-      oldCardList.addAll(newCardList);
-
-      _photoListState.content(oldCardList);
-      _currentPage++;
-      loading = false;
-      _loadingState.content(true);
-    }
-  }
-
   @override
   void errorLoad() {
     _loadingState.loading();
@@ -114,21 +109,21 @@ class ListPageWidgetModel extends WidgetModel<ListPageScreen, ListPageModel>
 
 /// Interface of [ListPageWidgetModel].
 abstract class IListPageWidgetModel extends IWidgetModel {
-  /// Text editing controller Main Screen.
+  /// Скролл контролеер отвечающий за пагинациб
   ScrollController get scrollController;
 
-  /// показываемые темы
+  /// показываемые фото
   ListenableState<EntityState<List<CardInfo>>> get photoListState;
 
-  /// показываемые темы
+  /// показываемый лоудер или ошибка
   ListenableState<EntityState<bool>> get loadingState;
 
-  /// action of dialog
+  /// метод для загрузки при первой неудачи
   void startingLoad();
 
-  /// action of dialog
+  /// метод для загрузки при не первой неудачи
   void errorLoad();
 
-  /// action of dialog
+  ///  переход на экран деталей
   void pushToDetailScreen(CardInfo cardInfo);
 }

@@ -5,16 +5,10 @@ import 'package:http/http.dart' as http;
 
 const int imagesPerPage = 3;
 
-/// Модель экрана мест
+/// Модель экрана просмотра фото
 class ListPageModel extends ElementaryModel {
-  /// Конструктор [ListPageModel].
   ListPageModel() : super();
 
-  /// закрытие потоков
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   /// получить список 3 деталей фото (должен быть дио но нет времени)
   Future<List<CardInfo>?> search(int pageNumber) async {

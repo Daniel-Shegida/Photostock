@@ -4,7 +4,6 @@ import 'package:endgame/features/detail_page/detail_page_screen.dart';
 import 'package:endgame/utils/card_info.dart';
 import 'package:flutter/material.dart';
 
-/// фабрика создания [DetailWidgetModel]
 DetailWidgetModel Function(BuildContext context)
     placeDetailWidgetModelFactoryWithParams(CardInfo url) {
   return (context) {
@@ -15,7 +14,6 @@ DetailWidgetModel Function(BuildContext context)
   };
 }
 
-/// WidgetModel for [DetailScreen]
 class DetailWidgetModel extends WidgetModel<DetailScreen, DetailModel>
     with SingleTickerProviderWidgetModelMixin
     implements IDetailWidgetModel {
@@ -48,7 +46,9 @@ class DetailWidgetModel extends WidgetModel<DetailScreen, DetailModel>
 
 /// Interface of [DetailWidgetModel].
 abstract class IDetailWidgetModel extends IWidgetModel {
+  /// Информация о фото
   CardInfo get cardInfo;
 
+  /// переход обратно на экран списка фото
   void pop();
 }

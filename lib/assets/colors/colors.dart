@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// проектные цвета
 abstract class ProjectColors {
   static const Color black = _black;
   static const Color white = _white;

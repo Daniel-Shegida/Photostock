@@ -6,9 +6,8 @@ import 'package:endgame/features/list_page/widgets/error_widget.dart';
 import 'package:endgame/utils/card_info.dart';
 import 'package:flutter/material.dart';
 
-/// экран просмотра существующих мест
+/// экран просмтора фото
 class ListPageScreen extends ElementaryWidget<IListPageWidgetModel> {
-  /// standard consctructor for elem
   const ListPageScreen({
     Key? key,
     WidgetModelFactory wmFactory = listPageWidgetModelFactory,

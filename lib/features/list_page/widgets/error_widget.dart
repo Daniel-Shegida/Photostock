@@ -2,7 +2,10 @@ import 'package:endgame/assets/colors/colors.dart';
 import 'package:endgame/assets/text/text.dart';
 import 'package:flutter/material.dart';
 
+/// виджет при ошибке загрузки
 class LoadingErrorWidget extends StatelessWidget {
+
+  /// метод повторного загрузки фото
   final VoidCallback onPressed;
 
   const LoadingErrorWidget({required this.onPressed, Key? key})
