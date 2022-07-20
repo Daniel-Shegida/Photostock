@@ -35,6 +35,15 @@ class ListPageScreen extends ElementaryWidget<IListPageWidgetModel> {
                             controller: wm.scrollController,
                             itemBuilder: (context, index) {
                               return ImageSheet(
+                                /// CODE REVIEW
+                                /// 
+                                /// Это просто не имеет смысла, т.к. ты уже
+                                /// реализовывал буквально ту же логику
+                                /// в Model.
+                                /// 
+                                /// Следовало обработать value на null до
+                                /// того, как он попадёт в эту строчку кода и
+                                /// не пришлось бы использовать везде `??`
                                 imageUrl: value?[index].imageUrl ?? "daq",
                                 onTap: () {
                                   wm.pushToDetailScreen(value![index]);

@@ -2,11 +2,18 @@ import 'package:endgame/assets/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 
+
 /// карточки фото в листе
 class ImageSheet extends StatelessWidget {
 
   /// метод перехода на экран деталей
   final VoidCallback onTap;
+
+  /// CODEREVIEW
+  /// 
+  /// У тебя уже есть удобный класс CardInfo, в котором содержатся те же поля,
+  /// так что в дублировании нет никакого смысла.
+  
   ///  url фото
   final String imageUrl;
   ///  hash фото
