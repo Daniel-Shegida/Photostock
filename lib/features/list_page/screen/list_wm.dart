@@ -115,6 +115,16 @@ abstract class IListPageWidgetModel extends IWidgetModel {
   /// показываемые фото
   ListenableState<EntityState<List<CardInfo>>> get photoListState;
 
+  /// CODE REVIEW
+  /// 
+  /// Совсем непонятно, что это. По документации "лоудер или ошибка", по
+  /// названию - загрузка, по использованию - совсем неясно.
+  /// 
+  /// Как реагировать на использование `EntityState.loading(false)`. Это
+  /// загрузка или ошибка? А при использовании `EntityState.error(true)`?
+  /// 
+  /// Почему нельзя реагировать на загрузку или ошибку через `photoListState`?
+
   /// показываемый лоудер или ошибка
   ListenableState<EntityState<bool>> get loadingState;
 

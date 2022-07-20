@@ -7,6 +7,16 @@ import 'package:flutter_blurhash/flutter_blurhash.dart';
 
 /// Экран деталей фото
 class DetailScreen extends ElementaryWidget<IDetailWidgetModel> {
+  /// CODEREVIEW
+  ///
+  /// Понимаю, кажется, что cardInfo у нас есть уже на этом этапе и логичнее
+  /// оставить эти данные здесь и тут же использовать.
+  ///
+  /// Но с точки зрения архитектуры - правильнее передать в Model, а в
+  /// экране получить посредством WidgetModel.
+  ///
+  /// Этого комментария бы здесь не было, если бы ты не решил затаскивать
+  /// архитектурный паттерн в задание.
   final CardInfo cardInfo;
 
   DetailScreen({
